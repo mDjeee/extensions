@@ -11,4 +11,4 @@ WORKDIR /app
 COPY --from=build /app/target/extensions-*.jar extensions.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "extensions.jar"]
-CMD ["mvn", "spring-boot:run", "-Dspring-boot.run.profiles=prod"]
+CMD ["mvn", "spring-boot:run", "-Dspring-boot.run.profiles="]
