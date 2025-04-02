@@ -6,8 +6,9 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Run stage
-FROM openjdk:17-jdk-slim
+FROM openjdk:23-jdk-slim
 WORKDIR /app
 COPY --from=build /app/target/extensions-*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
+CMD ["mvn", "spring-boot:run", "-Dspring-boot.run.profiles=local"]
